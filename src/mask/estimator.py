@@ -46,7 +46,7 @@ class MaskEstimator:
             if cnt > 10000:
                 cnt = 0
             cnt += 1
-            if cnt % 30 == 0:
+            if cnt % 300 == 0:
                 self.sound_ret = True
             if cv2.waitKey(1) & 0xff == ord('q'):
                 break
