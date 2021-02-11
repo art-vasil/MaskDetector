@@ -36,9 +36,7 @@ class MaskEstimator:
 
             cv2.imshow('image', result_frame)
             if result_info and self.sound_ret:
-                if alarm_ret:
-                    playsound(MASK_AUDIO_FILE_PATH)
-                else:
+                if not alarm_ret:
                     playsound(NON_MASK_AUDIO_FILE_PATH)
                 self.sound_ret = False
             if cnt > 10000:
