@@ -12,7 +12,7 @@ class MaskEstimator:
 
     @staticmethod
     def play_sound(audio_file_path):
-        playsound(audio_file_path)
+        playsound(audio_file_path, block=False)
 
         return
 
