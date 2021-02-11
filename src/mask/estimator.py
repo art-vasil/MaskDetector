@@ -1,8 +1,8 @@
 import cv2
 
-from playsound import playsound
+import simpleaudio as sa
 from src.mask.detector import MaskDetector
-from settings import WEB_CAM, IP_CAM_ADDRESS, MASK_AUDIO_FILE_PATH, NON_MASK_AUDIO_FILE_PATH
+from settings import WEB_CAM, IP_CAM_ADDRESS, NON_MASK_AUDIO_FILE_PATH
 
 
 class MaskEstimator:
@@ -12,7 +12,9 @@ class MaskEstimator:
 
     @staticmethod
     def play_sound(audio_file_path):
-        playsound(audio_file_path, block=False)
+        wave_obj = sa.WaveObject.from_wave_file(audio_file_path)
+        play_obj = wave_obj.play()
+        play_obj.wait_done()
 
         return
 
