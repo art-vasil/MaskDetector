@@ -1,3 +1,4 @@
+import threading
 import cv2
 
 import simpleaudio as sa
@@ -39,7 +40,8 @@ class MaskEstimator:
             cv2.imshow('image', result_frame)
             if result_info and self.sound_ret:
                 if not alarm_ret:
-                    playsound(NON_MASK_AUDIO_FILE_PATH)
+                    sound_thread = threading.Thread(target=self.play_sound, args=[NON_MASK_AUDIO_FILE_PATH, ])
+                    sound_thread.start()
                 self.sound_ret = False
             if cnt > 10000:
                 cnt = 0
